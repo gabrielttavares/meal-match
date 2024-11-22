@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import axios from 'axios';
 import CachedRecipe from '../models/cachedRecipesModel';
+import { SPOONACULAR_API_KEY } from '../config/env';
 
 export const searchRecipe = async (req: Request, res: Response) => {
     const { ingredient } = req.query;
@@ -15,7 +16,7 @@ const getCachedRecipes = async (ingredient: string) => {
 //Fetch recipes from the external API.
 const fetchRecipesFromAPI = async (ingredient: string) => {
     const response = await axios.get(
-        `https://api.spoonacular.com/recipes/search?query=${ingredient}&apiKey=${process.env.SPOONACULAR_API_KEY}`
+        `https://api.spoonacular.com/recipes/search?query=${ingredient}&apiKey=${SPOONACULAR_API_KEY}`
     );
     return response.data;
 };
