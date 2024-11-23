@@ -2,6 +2,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 import connectDB from './config/db';
 import recipeRoutes from './routes/recipeRoutes';
+import testRoutes from './routes/testRoutes';
 
 dotenv.config();
 connectDB();
@@ -19,4 +20,5 @@ app.listen(PORT, () => {
 });
 
 app.use('/api/recipes', recipeRoutes);
+app.use(testRoutes);
 
